@@ -1,0 +1,51 @@
+openapi: "3.0.3"
+info:
+  title: Demo API
+  version: 0.0.1
+  description: >-
+    Demo API description.
+  contact:
+    email: raphaeldias.ti@gmail.com
+servers:
+  - url: http://localhost:5000/api/v1
+    description: Local
+paths:
+  /demo:
+    get:
+      responses:
+        200:
+          $ref: "#/components/responses/DemoResponse"
+components:
+  responses:
+    DemoResponse:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/DemoSchema"
+  schemas:
+    DefaultResponseSchema:
+      type: object
+      description: default response schema
+      properties:
+        timestamp:
+          type: integer
+          description: timestamp of the moment the request was made
+        status_code:
+          type: integer
+          description: status code returned by the request
+        data:
+          type: object
+          description: response body content
+      required:
+        - timestamp
+        - status_code
+        - data
+    DemoSchema:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponseSchema'
+        - type: object
+          properties:
+            data:
+              type: string
+          required:
+            - data
