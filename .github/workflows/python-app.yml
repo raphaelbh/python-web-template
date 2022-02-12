@@ -41,4 +41,10 @@ jobs:
         export PYTHONPATH=app
         pip install pytest
         pip install pytest-cov
-        pytest --cov-fail-under=90 --cov=app tests/
+        pytest --cache-clear --cov-fail-under=90 --cov=app tests/
+        pytest --cache-clear --cov-fail-under=90 --cov=app tests/ > artifacts/coverage.txt
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: artifacts/coverage.txt
