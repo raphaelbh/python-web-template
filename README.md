@@ -25,7 +25,8 @@ $ curl http://localhost:5000/api/v1/demo
 ## Running Tests
 
 ```bash
-$ pytest --cov=app tests/
+$ export PYTHONPATH=application
+$ pytest --cov=application tests/
 ```
 
 ## Tech Stack
