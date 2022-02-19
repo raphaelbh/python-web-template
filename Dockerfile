@@ -1,7 +1,7 @@
 FROM python:3.9.10-alpine
 
-COPY ./app /app
-WORKDIR /app
+COPY ./application /application
+WORKDIR /application
 
 RUN pip install -r requirements.txt
 
